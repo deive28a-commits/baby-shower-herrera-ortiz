@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Baby Shower · Bebé Herrera Ortiz</title>
+
+  <!-- Vista previa al compartir por WhatsApp.
+       IMPORTANTE: cuando la subas a internet, cambia "img/osita-princesa.jpeg"
+       por la dirección completa, ej: https://tusitio.github.io/baby-shower/img/osita-princesa.jpeg -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="🎀 Baby Shower · Bebé Herrera Ortiz 🎀">
+  <meta property="og:description" content="Abre, tenemos una sorpresa para ti… ¡Una princesita viene en camino! Domingo 13 de diciembre · 2:30 p.m.">
+  <meta property="og:image" content="https://deive28a-commits.github.io/baby-shower-herrera-ortiz/img/osita-princesa.jpeg">
+  <meta property="og:url" content="https://deive28a-commits.github.io/baby-shower-herrera-ortiz/">
+  <meta name="theme-color" content="#fbcfdc">
+
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎀</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Quicksand:wght@400;500;600;700&family=Dancing+Script:wght@600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* =========================================================
+       PALETA · TONALIDADES ROSADAS
+       ========================================================= */
+    :root {
+      --rosa-50:  #fff6f9;
+      --rosa-100: #ffe6ee;
+      --rosa-200: #fcd2df;
+      --rosa-300: #f7aec3;
+      --rosa-400: #ef86a4;
+      --rosa-500: #df5f88;
+      --rosa-600: #c4446f;
+      --vino:     #86354f;
+      --cafe:     #6e4b3d;
+      --blanco:   #ffffff;
+      --sobre:        #f4a3b2;
+      --sobre-oscuro: #e98d9f;
+      --sobre-solapa: #f7b3c0;
+      --lazo:         #d24d6c;
+      --sombra: 0 10px 30px rgba(196, 68, 111, .18);
+      --script: 'Great Vibes', 'Dancing Script', cursive;
+      --script2: 'Dancing Script', cursive;
+      --texto: 'Quicksand', system-ui, sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+    body {
+      font-family: var(--texto);
+      color: var(--cafe);
+      background: var(--rosa-100);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    body.bloqueado { overflow: hidden; height: 100vh; }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; }
+
+    /* =========================================================
+       PORTADA · SOBRE ROSADO
+       ========================================================= */
+    #portada {
+      position: fixed; inset: 0; z-index: 50;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 34px; padding: 24px 16px;
+      background:
+        radial-gradient(circle at 15% 20%, rgba(255,255,255,.75) 0, transparent 35%),
+        radial-gradient(circle at 85% 80%, rgba(255,255,255,.6) 0, transparent 40%),
+        radial-gradient(circle at 80% 15%, var(--rosa-300) 0, transparent 30%),
+        linear-gradient(160deg, var(--rosa-100), var(--rosa-200) 55%, var(--rosa-300));
+      transition: opacity .9s ease, visibility .9s ease;
+    }
+    #portada.saliendo { opacity: 0; visibility: hidden; }
+
+    .letrero {
+      position: relative; text-align: center;
+      background: var(--blanco);
+      padding: 18px 26px 16px;
+      border-radius: 18px;
+      box-shadow: var(--sombra);
+      border: 2px dashed var(--rosa-300);
+      max-width: 340px;
+      animation: balanceo 3.5s ease-in-out infinite;
+      transform-origin: top center;
+      transition: opacity .5s ease, transform .5s ease;
+    }
+    .letrero::before, .letrero::after {
+      content: ""; position: absolute; top: -34px; width: 2px; height: 34px;
+      background: var(--rosa-400);
+    }
+    .letrero::before { left: 30%; }
+    .letrero::after  { right: 30%; }
+    .letrero .grande { font-family: var(--script); font-size: 46px; color: var(--rosa-600); line-height: 1; }
+    .letrero .peq { font-family: var(--script2); font-size: 22px; color: var(--vino); margin-top: 4px; }
+    .ocultar-suave { opacity: 0 !important; transform: translateY(-10px) scale(.96) !important; animation: none !important; }
+
+    @keyframes balanceo { 0%,100% { transform: rotate(-1.6deg); } 50% { transform: rotate(1.6deg); } }
+
+    /* Sobre */
+    .sobre-zona { position: relative; width: min(84vw, 340px); aspect-ratio: 16 / 10; perspective: 1200px; cursor: pointer; }
+    .sobre-zona:focus-visible { outline: 3px solid var(--rosa-500); outline-offset: 8px; border-radius: 12px; }
+    .sobre { position: absolute; inset: 0; animation: flotar 3s ease-in-out infinite; }
+    .abierto .sobre { animation: none; }
+    @keyframes flotar { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+
+    .sobre-fondo {
+      position: absolute; inset: 0; border-radius: 10px;
+      background: linear-gradient(180deg, var(--sobre-oscuro), var(--sobre));
+      box-shadow: 0 18px 35px rgba(160, 50, 85, .28);
+    }
+    .carta {
+      position: absolute; left: 6%; right: 6%; top: 6%; height: 92%;
+      background: var(--blanco); border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0,0,0,.08);
+      display: flex; align-items: center; gap: 10px; padding: 10px 14px;
+      transition: transform 2.2s cubic-bezier(.22,.8,.3,1);
+      z-index: 2;
+      overflow: hidden;
+    }
+    .carta img { width: 34%; height: 100%; object-fit: contain; mix-blend-mode: multiply; }
+    .carta .carta-txt { font-family: var(--script2); color: var(--rosa-600); font-size: clamp(16px, 5vw, 22px); line-height: 1.15; text-align: center; flex: 1; }
+    .abierto .carta { transform: translateY(-58%); }
+
+    .sobre-bolsillo {
+      position: absolute; left: 0; right: 0; bottom: 0; height: 60%;
+      background: linear-gradient(180deg, var(--sobre), #f29aab);
+      border-radius: 0 0 10px 10px;
+      z-index: 3;
+      box-shadow: inset 0 3px 0 rgba(255,255,255,.35);
+    }
+    .sobre-solapa {
+      position: absolute; left: 0; right: 0; top: 0; height: 50%;
+      background: linear-gradient(180deg, var(--sobre-solapa), var(--sobre));
+      border-radius: 10px 10px 22px 22px;
+      transform-origin: top center;
+      transition: transform .8s cubic-bezier(.4,.1,.3,1), z-index 0s .4s;
+      z-index: 4;
+      box-shadow: 0 4px 8px rgba(160, 50, 85, .22);
+      backface-visibility: visible;
+    }
+    .sobre-solapa { transform: perspective(900px) rotateX(0deg); }
+    .abierto .sobre-solapa { transform: perspective(900px) rotateX(180deg); z-index: 1; filter: brightness(.94); }
+
+    .lazo {
+      position: absolute; left: 50%; top: 50%; width: 46%;
+      transform: translate(-50%, -50%);
+      z-index: 5; pointer-events: none;
+      transition: transform .6s ease, opacity .6s ease;
+      filter: drop-shadow(0 3px 3px rgba(120, 20, 50, .3));
+    }
+    .abierto .lazo { opacity: 0; transform: translate(-50%, -80%) scale(1.4) rotate(-12deg); }
+
+    .pista {
+      font-family: var(--texto); font-weight: 600; font-size: 15px; color: var(--vino);
+      display: flex; align-items: center; gap: 8px;
+      background: rgba(255,255,255,.7); padding: 8px 16px; border-radius: 999px;
+      transition: opacity .4s ease;
+    }
+    .pista span { display: inline-block; animation: rebote 1.2s ease-in-out infinite; }
+    @keyframes rebote { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
+
+    /* Mariposas */
+    .mariposa { position: fixed; width: 34px; height: 26px; pointer-events: none; z-index: 60; will-change: transform, opacity; }
+    .mariposa svg { width: 100%; height: 100%; overflow: visible; }
+    .mariposa .ala-i, .mariposa .ala-d { transform-box: view-box; transform-origin: 50% 50%; animation: aleteo .22s ease-in-out infinite alternate; }
+    .mariposa .ala-d { animation-delay: .01s; }
+    @keyframes aleteo { from { transform: scaleX(1); } to { transform: scaleX(.25); } }
+
+    .mariposas-fondo { position: fixed; inset: 0; pointer-events: none; z-index: 1; overflow: hidden; }
+    .mariposas-fondo .mariposa { position: absolute; opacity: .35; z-index: 1; }
+
+    /* =========================================================
+       INVITACIÓN
+       ========================================================= */
+    #invitacion {
+      position: relative; z-index: 2;
+      max-width: 520px; margin: 0 auto;
+      background:
+        radial-gradient(circle at 0% 0%, rgba(255,255,255,.8), transparent 40%),
+        linear-gradient(180deg, var(--rosa-50), var(--rosa-100) 40%, var(--rosa-50));
+      min-height: 100vh;
+      box-shadow: 0 0 60px rgba(196, 68, 111, .15);
+      opacity: 0; transition: opacity 1s ease;
+    }
+    #invitacion.visible { opacity: 1; }
+    @media (min-width: 560px) {
+      body { background: radial-gradient(circle at 20% 20%, var(--rosa-200), transparent 40%), radial-gradient(circle at 80% 80%, var(--rosa-300), transparent 45%), var(--rosa-100); }
+    }
+
+    .seccion { position: relative; padding: 56px 22px; text-align: center; }
+    .seccion + .seccion { border-top: 1px dashed var(--rosa-300); }
+
+    .titulo {
+      font-family: var(--script); font-weight: 400;
+      font-size: clamp(40px, 11vw, 54px); line-height: 1.05;
+      color: var(--rosa-600);
+      margin-bottom: 14px;
+    }
+    .subtitulo { font-family: var(--script2); font-size: 22px; color: var(--vino); margin-bottom: 14px; }
+    .parrafo { font-size: 16.5px; line-height: 1.65; color: var(--cafe); max-width: 420px; margin: 0 auto 14px; }
+    .parrafo strong { color: var(--vino); }
+    .corazon-div { display: flex; align-items: center; justify-content: center; gap: 10px; color: var(--rosa-400); margin: 18px 0; }
+    .corazon-div::before, .corazon-div::after { content: ""; height: 1px; width: 70px; background: currentColor; opacity: .6; }
+
+    /* Revelado al hacer scroll */
+    .revelar { opacity: 0; transform: translateY(28px); transition: opacity .9s ease, transform .9s ease; }
+    .revelar.en-vista { opacity: 1; transform: none; }
+
+    /* Sección 2 · Noticia */
+    .noticia .anuncio {
+      font-family: var(--script); font-size: clamp(44px, 12.5vw, 60px); color: var(--rosa-500); line-height: 1.05;
+      margin: 10px 0 6px;
+      text-shadow: 0 2px 0 #fff;
+    }
+    .osita-wrap { position: relative; width: min(78%, 330px); margin: 10px auto 0; }
+    .castillo {
+      width: min(62%, 260px); margin: -16px auto 6px; mix-blend-mode: multiply; opacity: .9;
+      -webkit-mask-image: radial-gradient(ellipse at center, #000 52%, transparent 71%);
+              mask-image: radial-gradient(ellipse at center, #000 52%, transparent 71%);
+    }
+    .osita-wrap .osita {
+      position: relative; mix-blend-mode: multiply; animation: flotar 4s ease-in-out infinite;
+      -webkit-mask-image: radial-gradient(ellipse 60% 55% at center, #000 75%, transparent 100%);
+              mask-image: radial-gradient(ellipse 60% 55% at center, #000 75%, transparent 100%);
+    }
+    .corona-brillo { position: absolute; top: 2%; left: 50%; width: 10px; height: 10px; border-radius: 50%; background: #fff; box-shadow: 0 0 12px 6px #fff; opacity: 0; animation: brillo 2.4s ease-in-out infinite; }
+    @keyframes brillo { 0%,100% { opacity: 0; transform: scale(.4); } 50% { opacity: .9; transform: scale(1); } }
+
+    /* Sección 3 · Invitación */
+    .marco-arco {
+      width: min(78%, 300px); aspect-ratio: 3 / 4; margin: 6px auto 22px;
+      border-radius: 999px 999px 24px 24px;
+      border: 6px solid var(--blanco);
+      outline: 2px solid var(--rosa-300); outline-offset: 5px;
+      box-shadow: var(--sombra);
+      background: url("img/carlos-anita-caricatura.jpeg") 13% 5% / 185% auto no-repeat, var(--rosa-100);
+    }
+    .detalles { display: grid; gap: 12px; margin: 22px auto 0; max-width: 420px; }
+    .detalle {
+      display: flex; align-items: center; gap: 14px; text-align: left;
+      background: var(--blanco); border-radius: 18px; padding: 14px 16px;
+      box-shadow: 0 4px 14px rgba(196, 68, 111, .1);
+      border: 1px solid var(--rosa-200);
+    }
+    .detalle .ico { flex: 0 0 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; background: var(--rosa-100); font-size: 22px; }
+    .detalle .eti { font-size: 12px; font-weight: 700; letter-spacing: .12em; color: var(--rosa-500); text-transform: uppercase; }
+    .detalle .val { font-size: 16px; font-weight: 600; color: var(--vino); line-height: 1.35; }
+    .detalle .val small { display: block; font-weight: 500; color: var(--cafe); font-size: 14px; }
+
+    .botones { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 18px; }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      font-family: var(--texto); font-weight: 700; font-size: 15px; letter-spacing: .02em;
+      text-decoration: none; cursor: pointer;
+      padding: 13px 22px; border-radius: 999px; border: none;
+      color: var(--blanco);
+      background: linear-gradient(135deg, var(--rosa-400), var(--rosa-600));
+      box-shadow: 0 8px 18px rgba(196, 68, 111, .3);
+      transition: transform .15s ease, box-shadow .15s ease;
+    }
+    .btn:hover { transform: translateY(-2px); box-shadow: 0 10px 22px rgba(196, 68, 111, .38); }
+    .btn:active { transform: translateY(0); }
+    .btn.claro { background: var(--blanco); color: var(--rosa-600); border: 2px solid var(--rosa-300); box-shadow: none; }
+    .btn.grande { font-size: 17px; padding: 16px 30px; }
+    .btn.latido { animation: latido 2.2s ease-in-out infinite; }
+    @keyframes latido { 0%,100% { transform: scale(1); } 12% { transform: scale(1.05); } 24% { transform: scale(1); } 36% { transform: scale(1.04); } }
+
+    .nota {
+      margin: 18px auto 0; max-width: 420px;
+      background: #fff8e8; border: 1px dashed #e9b86c; color: #7a5520;
+      border-radius: 14px; padding: 12px 16px; font-size: 15px; line-height: 1.5;
+    }
+
+    .fotos { display: flex; justify-content: center; gap: 4px; margin: 34px auto 0; }
+    .polaroid { background: #fff; padding: 8px 8px 30px; box-shadow: 0 8px 20px rgba(0,0,0,.12); width: 46%; max-width: 200px; position: relative; }
+    .polaroid img { aspect-ratio: 3 / 4; object-fit: cover; width: 100%; }
+    .polaroid:nth-child(1) { transform: rotate(-5deg); }
+    .polaroid:nth-child(2) { transform: rotate(4deg) translateY(10px); }
+    .polaroid::after { content: "💗"; position: absolute; bottom: 6px; left: 0; right: 0; text-align: center; font-size: 14px; }
+
+    /* Sección 4 · RSVP */
+    .rsvp-card {
+      background: var(--blanco); border-radius: 160px 160px 28px 28px;
+      padding: 46px 24px 30px; box-shadow: var(--sombra);
+      border: 2px solid var(--rosa-200); max-width: 420px; margin: 0 auto;
+    }
+
+    /* Sección 5 · Regalos */
+    .regalos .titulo { margin-bottom: 6px; }
+    .regalos .bajada { font-family: var(--script2); font-size: 21px; color: var(--rosa-500); margin-bottom: 18px; line-height: 1.3; }
+    .importante {
+      background: var(--blanco); border-radius: 22px; padding: 22px 20px; margin: 24px auto 0; max-width: 420px;
+      border: 2px dashed var(--rosa-300);
+    }
+    .importante h3 { font-family: var(--script2); font-size: 26px; color: var(--rosa-600); margin-bottom: 8px; }
+    .tarjetita {
+      display: flex; gap: 14px; align-items: flex-start; text-align: left;
+      background: linear-gradient(135deg, var(--blanco), var(--rosa-50));
+      border: 1px solid var(--rosa-200); border-radius: 18px; padding: 16px; margin: 14px auto 0; max-width: 420px;
+    }
+    .tarjetita .ico { font-size: 30px; line-height: 1; }
+    .tarjetita h4 { font-size: 15px; letter-spacing: .1em; text-transform: uppercase; color: var(--rosa-500); margin-bottom: 4px; }
+    .tarjetita p { font-size: 15.5px; line-height: 1.55; }
+    .llave {
+      display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap;
+      margin-top: 10px; background: var(--rosa-100); border-radius: 12px; padding: 10px 12px;
+    }
+    .llave b { font-size: 20px; letter-spacing: .06em; color: var(--vino); }
+    .btn-copiar { font-family: var(--texto); font-weight: 700; font-size: 13px; padding: 8px 14px; border-radius: 999px; border: none; cursor: pointer; background: var(--rosa-500); color: #fff; }
+
+    /* Sección 6 · Cierre con cuenta regresiva sobre la ilustración */
+    .cierre { padding: 0 0 40px; }
+    .cierre-arte { position: relative; container-type: inline-size; }
+    .cierre-arte img { width: 100%; }
+    .contador {
+      position: absolute; left: 59.6%; top: 81.6%; width: 32.4%; height: 8.6%;
+      display: flex; align-items: center; justify-content: center; gap: .6cqw;
+      color: var(--rosa-600);
+    }
+    .contador .u { display: flex; flex-direction: column; align-items: center; min-width: 6.4cqw; }
+    .contador .n { font-family: var(--texto); font-weight: 700; font-size: 5cqw; line-height: 1; }
+    .contador .l { font-size: 1.7cqw; font-weight: 700; letter-spacing: .08em; color: var(--vino); margin-top: .4cqw; }
+    .contador .dp { font-weight: 700; font-size: 4cqw; line-height: 1; margin-top: -1.8cqw; }
+    .contador .msg { font-family: var(--script2); font-size: 3.6cqw; text-align: center; line-height: 1.1; }
+    .solo-lectores { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+    .pie { text-align: center; font-family: var(--script); font-size: 34px; color: var(--rosa-500); padding: 26px 16px 8px; }
+
+    /* Botón flotante de música */
+    #btn-musica {
+      position: fixed; right: 16px; bottom: 18px; z-index: 40;
+      width: 54px; height: 54px; border-radius: 50%; border: 3px solid #fff; cursor: pointer;
+      background: linear-gradient(135deg, var(--rosa-400), var(--rosa-600)); color: #fff; font-size: 22px;
+      box-shadow: 0 8px 20px rgba(196, 68, 111, .4);
+      display: none; align-items: center; justify-content: center;
+    }
+    #btn-musica.mostrar { display: flex; }
+    #btn-musica.sonando { animation: girar 4s linear infinite; }
+    #btn-musica.sonando::after {
+      content: ""; position: absolute; inset: -8px; border-radius: 50%; border: 2px solid var(--rosa-400);
+      animation: onda 1.6s ease-out infinite;
+    }
+    @keyframes girar { to { transform: rotate(360deg); } }
+    @keyframes onda { from { transform: scale(.85); opacity: .9; } to { transform: scale(1.35); opacity: 0; } }
+
+    /* Reproductor de YouTube oculto (no usar display:none, bloquea el audio) */
+    #yt-contenedor { position: fixed; width: 1px; height: 1px; left: -10px; bottom: 0; opacity: 0; pointer-events: none; }
+
+    .toast {
+      position: fixed; left: 50%; bottom: 90px; transform: translateX(-50%) translateY(20px);
+      background: var(--vino); color: #fff; padding: 10px 18px; border-radius: 999px; font-weight: 600; font-size: 14px;
+      opacity: 0; transition: all .3s ease; z-index: 70; pointer-events: none;
+    }
+    .toast.ver { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .2s !important; }
+    }
+  </style>
+</head>
+
+<body class="bloqueado">
+
+  <!-- =========================================================
+       1. PORTADA · SOBRE ROSA + LETRERO
+       ========================================================= -->
+  <section id="portada" aria-label="Portada">
+    <div class="letrero" id="letrero">
+      <p class="grande">Abre,</p>
+      <p class="peq">tenemos una sorpresa para ti…</p>
+    </div>
+
+    <div class="sobre-zona" id="sobre" role="button" tabindex="0" aria-label="Abrir el sobre de la invitación">
+      <div class="sobre">
+        <div class="sobre-fondo"></div>
+        <div class="carta">
+          <img src="img/osita-princesa.jpeg" alt="">
+          <p class="carta-txt">¡Una princesita viene en camino!</p>
+        </div>
+        <div class="sobre-bolsillo"></div>
+        <div class="sobre-solapa"></div>
+        <!-- Lazo -->
+        <svg class="lazo" viewBox="0 0 120 80" aria-hidden="true">
+          <path d="M60 40 C40 10, 8 8, 10 30 C12 50, 40 48, 60 40Z" fill="#d24d6c"/>
+          <path d="M60 40 C80 10, 112 8, 110 30 C108 50, 80 48, 60 40Z" fill="#d24d6c"/>
+          <path d="M60 40 C46 22, 22 20, 22 30 C22 40, 44 42, 60 40Z" fill="#b83a5a" opacity=".55"/>
+          <path d="M60 40 C74 22, 98 20, 98 30 C98 40, 76 42, 60 40Z" fill="#b83a5a" opacity=".55"/>
+          <path d="M58 42 C50 55, 42 66, 36 78 L46 76 L60 46Z" fill="#c8435f"/>
+          <path d="M62 42 C70 55, 78 66, 84 78 L74 76 L60 46Z" fill="#c8435f"/>
+          <ellipse cx="60" cy="40" rx="8" ry="9" fill="#e0607e"/>
+        </svg>
+      </div>
+    </div>
+
+    <p class="pista" id="pista"><span>💌</span> Toca el sobre para abrirlo</p>
+  </section>
+
+  <!-- Mariposas flotando de fondo (se crean por código) -->
+  <div class="mariposas-fondo" id="mariposas-fondo" aria-hidden="true"></div>
+
+  <!-- =========================================================
+       INVITACIÓN
+       ========================================================= -->
+  <main id="invitacion" aria-hidden="true">
+
+    <!-- 2. LA NOTICIA -->
+    <section class="seccion noticia">
+      <img class="castillo revelar" src="img/castillo.jpeg" alt="Castillo rosado de princesa">
+      <p class="parrafo revelar">Hay noticias que llenan el corazón de alegría y pequeños milagros que llegan para transformar nuestras vidas…</p>
+      <h1 class="anuncio revelar">¡Una princesita viene en camino!</h1>
+      <div class="osita-wrap revelar">
+        <img class="osita" src="img/osita-princesa.jpeg" alt="Osita princesa con corona y vestido rosado">
+        <span class="corona-brillo"></span>
+      </div>
+      <p class="subtitulo revelar" style="margin-top:18px">Baby Shower · Bebé Herrera Ortiz</p>
+    </section>
+
+    <!-- 3. INVITACIÓN: FECHA, HORA Y LUGAR -->
+    <section class="seccion">
+      <h2 class="titulo revelar">Carlos y Anita</h2>
+      <p class="subtitulo revelar">quieren celebrar contigo</p>
+      <div class="marco-arco revelar" role="img" aria-label="Carlos y Anita en versión caricatura"></div>
+      <p class="parrafo revelar">Con mucha alegría queremos invitarte a compartir una tarde muy especial, celebrando la próxima llegada de nuestra pequeña.</p>
+
+      <div class="detalles">
+        <div class="detalle revelar">
+          <div class="ico">📅</div>
+          <div><p class="eti">Fecha</p><p class="val" id="txt-fecha">Domingo 13 de diciembre de 2026</p></div>
+        </div>
+        <div class="detalle revelar">
+          <div class="ico">🕑</div>
+          <div><p class="eti">Hora</p><p class="val" id="txt-hora">2:30 p.m.</p></div>
+        </div>
+        <div class="detalle revelar">
+          <div class="ico">📍</div>
+          <div>
+            <p class="eti">Lugar</p>
+            <p class="val"><span id="txt-lugar">Salón social</span>
+              <small id="txt-direccion">Agrupación de Vivienda Rafael Núñez III Etapa · Calle 45 #45-84</small></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="botones revelar">
+        <a class="btn" id="btn-maps" href="#" target="_blank" rel="noopener">🗺️ Google Maps</a>
+        <a class="btn claro" id="btn-waze" href="#" target="_blank" rel="noopener">🚙 Waze</a>
+        <a class="btn claro" id="btn-calendario" href="#" target="_blank" rel="noopener">🗓️ Agendar</a>
+      </div>
+
+      <p class="nota revelar">🚗 Hay parqueadero público, pero <strong>te recomendamos no llevar carro</strong>.</p>
+
+      <div class="fotos revelar">
+        <div class="polaroid"><img src="img/foto-pareja.jpeg" alt="Carlos y Anita con globos rosados" loading="lazy"></div>
+        <div class="polaroid"><img src="img/foto-celebracion.jpeg" alt="Carlos y Anita en la celebración" loading="lazy"></div>
+      </div>
+    </section>
+
+    <!-- 4. ¿NOS ACOMPAÑAS? -->
+    <section class="seccion">
+      <div class="rsvp-card revelar">
+        <h2 class="titulo">¿Nos acompañas?</h2>
+        <p class="parrafo">Queremos preparar cada detalle con mucho cariño, por eso nos encantaría saber si podremos contar contigo.</p>
+        <p class="parrafo"><strong>Confirma en el siguiente link:</strong></p>
+        <a class="btn grande latido" id="btn-confirmar" href="#" target="_blank" rel="noopener">💗 Confirmar asistencia</a>
+      </div>
+    </section>
+
+    <!-- 5. UN DETALLE PARA NUESTRA PEQUEÑA -->
+    <section class="seccion regalos">
+      <h2 class="titulo revelar">Un detalle para nuestra pequeña</h2>
+      <p class="bajada revelar">¡Otro regalo diferente a los enunciados será recibido con mucho cariño!</p>
+
+      <p class="parrafo revelar">Hemos preparado una pequeña lista con algunas cositas que nos gustaría tener para recibir a nuestra bebé.</p>
+      <p class="parrafo revelar">Si deseas conocerla, puedes consultarla aquí:</p>
+      <div class="botones revelar" style="margin-top:4px">
+        <a class="btn grande" id="btn-lista" href="#" target="_blank" rel="noopener">🎁 Ver lista de regalos</a>
+      </div>
+
+      <div class="tarjetita revelar">
+        <div class="ico">🍼</div>
+        <div>
+          <h4>Cover</h4>
+          <p>Te pedimos llevar <strong>pañales y pañitos húmedos</strong>. En la lista de regalos encuentras cuáles.</p>
+        </div>
+      </div>
+
+      <div class="tarjetita revelar">
+        <div class="ico">💸</div>
+        <div>
+          <h4>¿Sin tiempo para comprar?</h4>
+          <p>Si de pronto no tienes tiempo de comprar algo, puedes transferir a la siguiente llave:</p>
+          <div class="llave">
+            <b id="txt-llave">3216386640</b>
+            <button class="btn-copiar" id="btn-copiar" type="button">Copiar</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="importante revelar">
+        <h3>¡Pero hay algo importante!</h3>
+        <p class="parrafo">Esta lista es solo una guía de los detalles que mamá y papá han imaginado para su pequeña. Si deseas sorprendernos con algo diferente, <strong>¡será recibido con muchísimo cariño!</strong></p>
+        <p class="parrafo" style="margin-bottom:0">Lo más importante es compartir contigo esta alegría. 💗</p>
+      </div>
+    </section>
+
+    <!-- 6. CIERRE + CUENTA REGRESIVA -->
+    <section class="seccion cierre">
+      <div class="cierre-arte revelar">
+        <img src="img/carlos-anita-caricatura.jpeg" alt="Carlos y Anita en caricatura" loading="lazy">
+        <p class="solo-lectores">Cada abrazo, cada sonrisa y cada muestra de cariño harán de este día un recuerdo inolvidable. Gracias por ser parte de esta dulce espera. Con cariño, Carlos y Anita. ¡Te esperamos!</p>
+        <div class="contador" id="contador" aria-live="polite">
+          <div class="u"><span class="n" id="cd-d">00</span><span class="l">DÍAS</span></div><span class="dp">:</span>
+          <div class="u"><span class="n" id="cd-h">00</span><span class="l">HRS</span></div><span class="dp">:</span>
+          <div class="u"><span class="n" id="cd-m">00</span><span class="l">MIN</span></div><span class="dp">:</span>
+          <div class="u"><span class="n" id="cd-s">00</span><span class="l">SEG</span></div>
+        </div>
+      </div>
+      <p class="pie">💗 Bebé Herrera Ortiz 💗</p>
+    </section>
+  </main>
+
+  <button id="btn-musica" type="button" aria-label="Pausar o reproducir la música">🎵</button>
+  <div id="yt-contenedor"><div id="yt-player"></div></div>
+  <audio id="audio-mp3" loop playsinline preload="none"></audio>
+  <div class="toast" id="toast">¡Llave copiada! 💗</div>
+
+  <script>
+    /* =========================================================
+       ✏️  DATOS DE LA INVITACIÓN — EDITA SOLO AQUÍ
+       ========================================================= */
+    const CONFIG = {
+      // Fecha y hora del evento (hora de Colombia, -05:00)
+      fechaEvento: "2026-12-13T14:30:00-05:00",
+      duracionHoras: 4,
+
+      lugar: "Salón social",
+      direccion: "Agrupación de Vivienda Rafael Núñez III Etapa · Calle 45 #45-84",
+      // Búsqueda que se usa en Google Maps y Waze (confirma la ciudad)
+      busquedaMapa: "Calle 45 #45-84, Rafael Núñez, Bogotá, Colombia",
+
+      linkConfirmacion: "https://forms.gle/W8hSG1eJJWxAgTyT7",
+      linkListaRegalos: "https://docs.google.com/spreadsheets/d/1e1N0RsO9T_AjRz5r5x-2VAdbAoaHmetfj_yUWx5mqV8/edit?usp=sharing",
+      llaveTransferencia: "3216386640",
+
+      // Música: si pones un archivo "cancion.mp3" en esta carpeta, escribe su nombre aquí
+      // y se usará en lugar de YouTube (es lo más confiable en iPhone).
+      musicaMp3: "",
+      // "El regalo más grande" – Ángel Melo (YouTube)
+      youtubeId: "hA-96SZzrGU",
+      youtubeInicioSeg: 0
+    };
+
+    /* ---------- Cargar datos en la página ---------- */
+    const $ = (id) => document.getElementById(id);
+    const q = encodeURIComponent(CONFIG.busquedaMapa);
+    $("btn-maps").href = `https://www.google.com/maps/search/?api=1&query=${q}`;
+    $("btn-waze").href = `https://waze.com/ul?q=${q}&navigate=yes`;
+    $("btn-confirmar").href = CONFIG.linkConfirmacion;
+    $("btn-lista").href = CONFIG.linkListaRegalos;
+    $("txt-llave").textContent = CONFIG.llaveTransferencia;
+    $("txt-lugar").textContent = CONFIG.lugar;
+    $("txt-direccion").textContent = CONFIG.direccion;
+
+    const inicio = new Date(CONFIG.fechaEvento);
+    const fin = new Date(inicio.getTime() + CONFIG.duracionHoras * 3600e3);
+    const fmtCal = (d) => d.toISOString().replace(/[-:]/g, "").replace(/\.\d{3}/, "");
+    $("btn-calendario").href = "https://calendar.google.com/calendar/render?action=TEMPLATE" +
+      "&text=" + encodeURIComponent("Baby Shower · Bebé Herrera Ortiz 🎀") +
+      "&dates=" + fmtCal(inicio) + "/" + fmtCal(fin) +
+      "&details=" + encodeURIComponent("¡Una princesita viene en camino! Te esperamos.\nCover: pañales y pañitos húmedos.") +
+      "&location=" + encodeURIComponent(CONFIG.lugar + ", " + CONFIG.direccion);
+
+    /* ---------- Mariposas ---------- */
+    const COLORES = ["#e0218a", "#f06fa5", "#ff9ec2", "#d63384", "#f7a8c8", "#c2185b"];
+    function crearMariposa(color) {
+      const el = document.createElement("div");
+      el.className = "mariposa";
+      el.innerHTML = `
+        <svg viewBox="0 0 40 30">
+          <g class="ala-i" fill="${color}">
+            <path d="M20 15 C14 1, 1 0, 3 10 C4 15, 12 16, 20 15Z"/>
+            <path d="M20 15 C13 17, 5 25, 9 28 C13 30, 18 23, 20 15Z" opacity=".85"/>
+          </g>
+          <g class="ala-d" fill="${color}">
+            <path d="M20 15 C26 1, 39 0, 37 10 C36 15, 28 16, 20 15Z"/>
+            <path d="M20 15 C27 17, 35 25, 31 28 C27 30, 22 23, 20 15Z" opacity=".85"/>
+          </g>
+          <rect x="19.2" y="8" width="1.6" height="15" rx=".8" fill="#7a2a45"/>
+        </svg>`;
+      return el;
+    }
+
+    function rafagaMariposas(origen) {
+      const r = origen.getBoundingClientRect();
+      const cx = r.left + r.width / 2, cy = r.top + r.height * 0.35;
+      const total = window.innerWidth < 500 ? 22 : 30;
+      for (let i = 0; i < total; i++) {
+        const m = crearMariposa(COLORES[i % COLORES.length]);
+        const tam = 22 + Math.random() * 22;
+        m.style.width = tam + "px"; m.style.height = tam * 0.75 + "px";
+        m.style.left = (cx - tam / 2) + "px"; m.style.top = (cy - tam / 2) + "px";
+        document.body.appendChild(m);
+        const dx = (Math.random() - 0.5) * window.innerWidth * 1.3;
+        const dy = -(window.innerHeight * (0.55 + Math.random() * 0.6));
+        const zig = (Math.random() - 0.5) * 120;
+        const rot = (Math.random() - 0.5) * 60;
+        const dur = 2800 + Math.random() * 2200;
+        const anim = m.animate([
+          { transform: "translate(0,0) scale(.2) rotate(0deg)", opacity: 0 },
+          { transform: `translate(${dx * .3 + zig}px, ${dy * .3}px) scale(1) rotate(${rot}deg)`, opacity: 1, offset: .25 },
+          { transform: `translate(${dx * .65 - zig}px, ${dy * .65}px) scale(1) rotate(${-rot}deg)`, opacity: 1, offset: .65 },
+          { transform: `translate(${dx}px, ${dy}px) scale(.8) rotate(${rot}deg)`, opacity: 0 }
+        ], { duration: dur, delay: i * 70, easing: "ease-out", fill: "both" });
+        anim.onfinish = () => m.remove();
+      }
+    }
+
+    function mariposasDeFondo() {
+      const cont = $("mariposas-fondo");
+      for (let i = 0; i < 7; i++) {
+        const m = crearMariposa(COLORES[i % COLORES.length]);
+        const tam = 18 + Math.random() * 14;
+        m.style.width = tam + "px"; m.style.height = tam * .75 + "px";
+        m.style.left = (Math.random() * 90) + "vw"; m.style.top = "105vh";
+        cont.appendChild(m);
+        m.animate([
+          { transform: "translate(0,0) rotate(-10deg)" },
+          { transform: `translate(${(Math.random() - .5) * 120}px, -60vh) rotate(12deg)`, offset: .5 },
+          { transform: `translate(${(Math.random() - .5) * 160}px, -120vh) rotate(-8deg)` }
+        ], { duration: 16000 + Math.random() * 12000, delay: i * 2500, iterations: Infinity, easing: "linear" });
+      }
+    }
+
+    /* ---------- Música (MP3 o YouTube) ---------- */
+    const btnMusica = $("btn-musica");
+    const audio = $("audio-mp3");
+    let ytPlayer = null, ytListo = false, quiereSonar = false, sonando = false;
+
+    function marcarSonando(v) { sonando = v; btnMusica.classList.toggle("sonando", v); btnMusica.textContent = v ? "🎵" : "🔇"; }
+
+    if (CONFIG.musicaMp3) {
+      audio.src = CONFIG.musicaMp3;
+      audio.addEventListener("play", () => marcarSonando(true));
+      audio.addEventListener("pause", () => marcarSonando(false));
+    } else if (CONFIG.youtubeId) {
+      const tag = document.createElement("script");
+      tag.src = "https://www.youtube.com/iframe_api";
+      document.head.appendChild(tag);
+    }
+
+    window.onYouTubeIframeAPIReady = function () {
+      ytPlayer = new YT.Player("yt-player", {
+        width: 1, height: 1, videoId: CONFIG.youtubeId,
+        playerVars: { autoplay: 0, controls: 0, playsinline: 1, loop: 1, playlist: CONFIG.youtubeId, start: CONFIG.youtubeInicioSeg, rel: 0 },
+        events: {
+          onReady: () => { ytListo = true; if (quiereSonar) reproducir(); },
+          onStateChange: (e) => marcarSonando(e.data === YT.PlayerState.PLAYING)
+        }
+      });
+    };
+
+    function reproducir() {
+      quiereSonar = true;
+      if (CONFIG.musicaMp3) { audio.play().catch(() => marcarSonando(false)); return; }
+      if (ytPlayer && ytListo) { ytPlayer.unMute(); ytPlayer.setVolume(85); ytPlayer.playVideo(); }
+    }
+    function pausar() {
+      quiereSonar = false;
+      if (CONFIG.musicaMp3) { audio.pause(); return; }
+      if (ytPlayer && ytListo) ytPlayer.pauseVideo();
+      marcarSonando(false);
+    }
+    btnMusica.addEventListener("click", () => (sonando || quiereSonar) ? pausar() : reproducir());
+
+    let pausadaPorSalir = false;
+    document.addEventListener("visibilitychange", () => {
+      if (document.hidden && (sonando || quiereSonar)) { pausadaPorSalir = true; pausar(); }
+      else if (!document.hidden && pausadaPorSalir) { pausadaPorSalir = false; reproducir(); }
+    });
+
+    /* ---------- Abrir el sobre ---------- */
+    const zonaSobre = $("sobre");
+    let abierto = false;
+    function abrirSobre() {
+      if (abierto) return;
+      abierto = true;
+      reproducir(); // dentro del toque del usuario para que el navegador permita el sonido
+      $("letrero").classList.add("ocultar-suave");
+      $("pista").style.opacity = "0";
+      zonaSobre.classList.add("abierto");
+      setTimeout(() => rafagaMariposas(zonaSobre), 450);
+      setTimeout(() => {
+        $("portada").classList.add("saliendo");
+        document.body.classList.remove("bloqueado");
+        const inv = $("invitacion");
+        inv.classList.add("visible");
+        inv.setAttribute("aria-hidden", "false");
+        btnMusica.classList.add("mostrar");
+        if (!sonando && !quiereSonar) marcarSonando(false);
+        window.scrollTo(0, 0);
+        mariposasDeFondo();
+      }, 3300);
+    }
+    zonaSobre.addEventListener("click", abrirSobre);
+    zonaSobre.addEventListener("keydown", (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); abrirSobre(); } });
+    $("pista").addEventListener("click", abrirSobre);
+
+    /* ---------- Aparecer al hacer scroll ---------- */
+    const obs = new IntersectionObserver((entradas) => {
+      entradas.forEach(en => { if (en.isIntersecting) { en.target.classList.add("en-vista"); obs.unobserve(en.target); } });
+    }, { threshold: 0.15 });
+    document.querySelectorAll(".revelar").forEach(el => obs.observe(el));
+
+    /* ---------- Copiar llave ---------- */
+    $("btn-copiar").addEventListener("click", async () => {
+      const txt = CONFIG.llaveTransferencia;
+      try { await navigator.clipboard.writeText(txt); }
+      catch (e) {
+        const t = document.createElement("textarea"); t.value = txt; document.body.appendChild(t);
+        t.select(); try { document.execCommand("copy"); } catch (_) {} t.remove();
+      }
+      const toast = $("toast"); toast.classList.add("ver");
+      setTimeout(() => toast.classList.remove("ver"), 1800);
+    });
+
+    /* ---------- Cuenta regresiva ---------- */
+    const dos = (n) => String(n).padStart(2, "0");
+    function contar() {
+      const ahora = Date.now();
+      const diff = inicio.getTime() - ahora;
+      if (diff <= 0) {
+        clearInterval(intervalo);
+        $("contador").innerHTML = ahora < fin.getTime()
+          ? '<p class="msg">¡Hoy es el gran día! 🎀</p>'
+          : '<p class="msg">¡Gracias por acompañarnos! 💗</p>';
+        return;
+      }
+      $("cd-d").textContent = dos(Math.floor(diff / 864e5));
+      $("cd-h").textContent = dos(Math.floor(diff / 36e5) % 24);
+      $("cd-m").textContent = dos(Math.floor(diff / 6e4) % 60);
+      $("cd-s").textContent = dos(Math.floor(diff / 1e3) % 60);
+    }
+    const intervalo = setInterval(contar, 1000);
+    contar();
+  </script>
+</body>
+</html>
